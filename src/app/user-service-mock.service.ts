@@ -11,11 +11,13 @@ export class UserServiceMockService {
     this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((data: User[]) => this.users = data);
   }
   getUser(id: number) {
+    let user: User = null;
     this.users.forEach((item) => {
       if (item.id === id) {
-        return item;
+        user = item;
       }
     });
+    return user;
   }
 
   createUser(user: User) {
@@ -39,7 +41,7 @@ export class UserServiceMockService {
   }
 
   deleteUser(id: number) {
-    this.users.filter((item) => {
+    this.users = this.users.filter((item) => {
       return item.id === id;
     });
   }
