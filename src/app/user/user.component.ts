@@ -19,13 +19,16 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.usersService.dataUpdated.subscribe(
-      this.users = this.usersService.getUsers()
+      () => {
+        this.users = this.usersService.getUsers();
+      }
     );
   }
 
   deleteUser(id: number) {
     this.usersService.deleteUser(id);
   }
+
 
 
 }
