@@ -2,15 +2,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { User } from './user';
 
+export interface UserService {
+  getUser(id: number): User;
+  createUser(user: User);
+  saveUser(id: number, user: User);
+  deleteUser(id: number);
+  getAllUsers(): User[];
+}
+
 @Injectable()
-export class UserServiceMockService {
+export class UserServiceMockService implements UserService {
 
   users: User[];
 
   constructor(private http: HttpClient) {
     this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((data: User[]) => this.users = data);
   }
-  getUser(id: number) {
+  getUser(id: number): User {
     let user: User = null;
     this.users.forEach((item) => {
       if (item.id === id) {
@@ -44,6 +52,10 @@ export class UserServiceMockService {
     this.users = this.users.filter((item) => {
       return item.id === id;
     });
+  }
+
+  getAllUsers() {
+    return this.users;
   }
 }
 
