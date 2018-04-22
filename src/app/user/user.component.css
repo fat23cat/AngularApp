@@ -1,0 +1,22 @@
+.user {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  margin: 0 0 5px 0;
+}
+
+.user-list {
+  width: 70%;
+}
+
+.user-buttons {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button {
+  width: 70%;
+}

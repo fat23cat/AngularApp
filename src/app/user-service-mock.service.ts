@@ -1,15 +1,23 @@
-import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { User } from './user';
+import {Injectable, EventEmitter} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {User} from './user';
 
 @Injectable()
 export class UserServiceMockService {
-
+  dataUpdated = new EventEmitter();
   users: User[];
 
   constructor(private http: HttpClient) {
-    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((data: User[]) => this.users = data);
+    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((data: User[]) => {
+      this.users = data;
+      this.dataUpdated.emit(this.users);
+    });
   }
+
+  getUsers() {
+    return this.users;
+  }
+
   getUser(id: number) {
     let user: User = null;
     this.users.forEach((item) => {
@@ -42,8 +50,9 @@ export class UserServiceMockService {
 
   deleteUser(id: number) {
     this.users = this.users.filter((item) => {
-      return item.id === id;
+      return item.id !== id;
     });
+    this.dataUpdated.emit(this.users);
   }
 }
 
