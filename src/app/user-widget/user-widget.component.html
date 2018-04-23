@@ -7,7 +7,6 @@
       <div class="header--actions">
         <button mat-raised-button class="button" (click)="showCreateUser()">Add new user</button>
       </div>
-      <app-user-create></app-user-create>
     </div>
     <div class="users-list">
       <app-user *ngFor="let user of users" [id]=user.id></app-user>

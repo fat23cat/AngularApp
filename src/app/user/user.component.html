@@ -6,7 +6,7 @@
     <li>Website: {{user.website}}</li>
   </ul>
   <div class="user-buttons">
-    <button mat-raised-button class="button">Edit user</button>
+    <button mat-raised-button class="button" (click)="onClickEdit(user.id)">Edit user</button>
     <button mat-raised-button class="button" (click)="deleteUser(user.id)">Delete user</button>
   </div>
 </div>

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Inject } from '@angular/core';
 import { Input} from '@angular/core';
 
 import { UserService } from '../../user-service-mock.service';
 import {User} from '../../user';
-
 
 @Component({
   selector: 'app-user-create',
@@ -12,9 +12,11 @@ import {User} from '../../user';
   styleUrls: ['./user-create.component.css']
 })
 export class UserCreateComponent implements OnInit {
+  userId: number = null;
+
   userService: UserService;
   buttonCaption: string;
-  @Input() userId: number;
+
 
   name = '';
   username = '';
@@ -22,14 +24,19 @@ export class UserCreateComponent implements OnInit {
   phone = '';
   website = '';
 
-  constructor(@Inject('FakeInstance') userService: UserService) {
+  constructor(@Inject('FakeInstance') userService: UserService,
+              public dialogRef: MatDialogRef<UserCreateComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
     this.userService = userService;
+    if (data !== null) {
+      this.userId = data.userId;
+    }
   }
 
   ngOnInit() {
     this.buttonCaption = 'Create';
 
-    if (this.userId !== undefined) {
+    if (this.userId !== null) {
       const user: User = this.userService.getUser(this.userId);
       this.name = user.name;
       this.username = user.username;
@@ -42,9 +49,8 @@ export class UserCreateComponent implements OnInit {
   }
 
 
-  debug($event) {
-    $event.preventDefault();
-    console.log(this.userService.getUsers());
+  Cancel() {
+    this.dialogRef.close();
   }
 
   clearAll() {
@@ -61,23 +67,23 @@ export class UserCreateComponent implements OnInit {
      const email = this.email;
      const phone = this.phone;
      const website = this.website;
-     let newUser: User = {
+     let newUserData: User = {
        name,
        username,
        email,
        phone,
        website,
      };
-     if ( this.userId !== undefined ) {
-       const oldUser: User = this.userService.getUser(this.userId);
-       newUser = {
-         ...oldUser,
-         ...newUser,
+     if ( this.userId !== null ) {
+       const oldUserData: User = this.userService.getUser(this.userId);
+       newUserData = {
+         ...oldUserData,
+         ...newUserData,
        };
-       this.userService.saveUser(this.userId, newUser);
+       this.userService.saveUser(this.userId, newUserData);
      } else {
-       this.userService.createUser(newUser);
+       this.userService.createUser(newUserData);
      }
-    this.clearAll();
+    this.dialogRef.close();
   }
 }

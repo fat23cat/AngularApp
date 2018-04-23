@@ -1,3 +1,10 @@
-.input-label {
-  display: block;
+.flex-item {
+  width: 200px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
