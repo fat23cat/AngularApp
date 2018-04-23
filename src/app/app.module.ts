@@ -8,6 +8,7 @@ import {UserWidgetComponent} from './user-widget/user-widget.component';
 import {UserComponent} from './user/user.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
+import {UserServiceMockService} from './user-service-mock.service';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import {MatButtonModule} from '@angular/material/button';
     HttpClientModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [UserServiceMockService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
