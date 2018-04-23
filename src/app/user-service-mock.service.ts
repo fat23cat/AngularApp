@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { User } from './user';
+import {Injectable, EventEmitter} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {User} from './user';
 
 export interface UserService {
   getUser(id: number): User;
@@ -11,14 +11,22 @@ export interface UserService {
 }
 
 @Injectable()
-export class UserServiceMockService implements UserService {
-
+export class UserServiceMockService {
+  dataUpdated = new EventEmitter();
   users: User[];
 
   constructor(private http: HttpClient) {
-    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((data: User[]) => this.users = data);
+    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((data: User[]) => {
+      this.users = data;
+      this.dataUpdated.emit(this.users);
+    });
   }
-  getUser(id: number): User {
+
+  getUsers() {
+    return this.users;
+  }
+
+  getUser(id: number) {
     let user: User = null;
     this.users.forEach((item) => {
       if (item.id === id) {
@@ -50,12 +58,9 @@ export class UserServiceMockService implements UserService {
 
   deleteUser(id: number) {
     this.users = this.users.filter((item) => {
-      return item.id === id;
+      return item.id !== id;
     });
-  }
-
-  getAllUsers() {
-    return this.users;
+    this.dataUpdated.emit(this.users);
   }
 }
 

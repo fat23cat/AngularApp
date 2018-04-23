@@ -1,0 +1,41 @@
+.main {
+
+}
+
+.widget {
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  background-color: azure;
+  width: 800px;
+  height: 700px;
+}
+
+.header {
+  margin: 0 0 5px 0;
+}
+
+.header--title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 10px 0;
+  border-bottom: 1px solid black;
+  font-size: 22px;
+}
+
+.header--actions {
+  display: flex;
+  justify-content: flex-start;
+  margin: 5px 0 0 0;
+}
+
+.users-list {
+  height: 590px;
+  padding: 0 5px;
+  overflow: auto;
+}
+
+.button {
+  margin: 5px 10px 5px 10px;
+}

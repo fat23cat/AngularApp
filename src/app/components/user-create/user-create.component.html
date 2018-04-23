@@ -1,0 +1,11 @@
+<form (submit)="createUser(user)">
+  <label> name <input name="name" [(ngModel)]="user.name"></label>
+  <label> username <input name="username" [(ngModel)]="user.username"></label>
+  <label> email <input name="email" [(ngModel)]="user.email"></label>
+  <label> phone <input name="phone" [(ngModel)]="user.phone"></label>
+  <label> website <input name="website" [(ngModel)]="user.website"></label>
+  <div class="form-control">
+    <button type="submit"> submit </button>
+    <button (click)="debug()" ></button>
+  </div>
+</form>

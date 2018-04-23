@@ -1,0 +1,25 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.user {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  margin: 0 0 10px 0;
+  padding: 10px;
+}
+
+.user-list {
+  width: 70%;
+}
+
+.user-buttons {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button {
+  width: 60%;
+}
