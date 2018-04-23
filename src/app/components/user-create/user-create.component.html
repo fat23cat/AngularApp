@@ -1,11 +1,11 @@
-<form (submit)="createUser(user)">
-  <label> name <input name="name" [(ngModel)]="user.name"></label>
-  <label> username <input name="username" [(ngModel)]="user.username"></label>
-  <label> email <input name="email" [(ngModel)]="user.email"></label>
-  <label> phone <input name="phone" [(ngModel)]="user.phone"></label>
-  <label> website <input name="website" [(ngModel)]="user.website"></label>
+<form (submit)="submitUser()">
+  <label class="input-label"> name <input name="name" [(ngModel)]="name"></label>
+  <label class="input-label"> username <input name="username" [(ngModel)]="username"></label>
+  <label class="input-label"> email <input name="email" [(ngModel)]="email"></label>
+  <label class="input-label"> phone <input name="phone" [(ngModel)]="phone"></label>
+  <label class="input-label"> website <input name="website" [(ngModel)]="website"></label>
   <div class="form-control">
-    <button type="submit"> submit </button>
-    <button (click)="debug()" ></button>
+    <button type="submit"> {{buttonCaption}} </button>
+    <button (click)="debug($event)" > debug </button>
   </div>
 </form>

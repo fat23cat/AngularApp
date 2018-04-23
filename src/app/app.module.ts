@@ -19,12 +19,12 @@ import { UserServiceMockService } from './user-service-mock.service';
     AppComponent,
     UserWidgetComponent,
     UserComponent,
-    UserCreateComponent
+    UserCreateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     MatButtonModule

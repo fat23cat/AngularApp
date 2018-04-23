@@ -9,6 +9,10 @@ export class UserWidgetComponent implements OnInit {
 
   constructor() { }
 
+  showCreateUser() {
+
+  }
+
   ngOnInit() {
   }
 

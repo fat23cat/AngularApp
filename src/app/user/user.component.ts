@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {User} from '../user';
-import {UserServiceMockService} from '../user-service-mock.service';
+import { UserService } from '../user-service-mock.service';
 import {HttpClient} from '@angular/common/http';
 
 
@@ -8,13 +8,13 @@ import {HttpClient} from '@angular/common/http';
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css'],
-  providers: [UserServiceMockService, HttpClient]
+  providers: [HttpClient]
 })
 export class UserComponent implements OnInit {
 
   users: User[] = [];
 
-  constructor(private usersService: UserServiceMockService) {
+  constructor(@Inject('FakeInstance') private usersService: UserService) {
   }
 
   ngOnInit() {

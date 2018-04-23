@@ -5,8 +5,9 @@
         Users List
       </span>
       <div class="header--actions">
-        <button mat-raised-button class="button">Add new user</button>
+        <button mat-raised-button class="button" (click)="showCreateUser()">Add new user</button>
       </div>
+      <app-user-create></app-user-create>
     </div>
     <div class="users-list">
       <app-user></app-user>
