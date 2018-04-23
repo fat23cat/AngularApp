@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, Input, OnChanges, OnInit} from '@angular/core';
 import {User} from '../user';
 import { UserService } from '../user-service-mock.service';
 import {HttpClient} from '@angular/common/http';
@@ -10,25 +10,22 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./user.component.css'],
   providers: [HttpClient]
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnChanges {
 
-  users: User[] = [];
+  @Input('id') id: number;
+  user: User = null;
 
   constructor(@Inject('FakeInstance') private usersService: UserService) {
   }
 
   ngOnInit() {
-    this.usersService.dataUpdated.subscribe(
-      () => {
-        this.users = this.usersService.getUsers();
-      }
-    );
+  }
+
+  ngOnChanges() {
+    this.user = this.usersService.getUser(this.id);
   }
 
   deleteUser(id: number) {
     this.usersService.deleteUser(id);
   }
-
-
-
 }

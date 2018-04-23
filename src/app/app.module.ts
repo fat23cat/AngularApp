@@ -25,7 +25,6 @@ import { UserServiceMockService } from './user-service-mock.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AppRoutingModule,
     HttpClientModule,
     MatButtonModule
   ],

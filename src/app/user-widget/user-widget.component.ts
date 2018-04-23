@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../user';
+import {UserServiceMockService} from '../user-service-mock.service';
+
 
 @Component({
   selector: 'app-user-widget',
@@ -7,13 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserWidgetComponent implements OnInit {
 
-  constructor() { }
+  users: User[] = null;
+  constructor(private usersService: UserServiceMockService) {
+  }
 
   showCreateUser() {
 
   }
 
   ngOnInit() {
+    this.usersService.dataUpdated.subscribe(
+      () => {
+        this.users = this.usersService.getUsers();
+      }
+    );
   }
 
 }
