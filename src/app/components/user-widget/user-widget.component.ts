@@ -1,9 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 
-import {User} from '../user';
-import { UserService } from '../user-service-mock.service';
-import {UserCreateComponent} from '../components/user-create/user-create.component';
+import {User} from '../../user';
+import { UserService } from '../../user-service-mock.service';
+import {UserCreateComponent} from '../user-create/user-create.component';
 
 
 

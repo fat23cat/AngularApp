@@ -9,8 +9,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
-import {UserWidgetComponent} from './user-widget/user-widget.component';
-import {UserComponent} from './user/user.component';
+import {UserWidgetComponent} from './components/user-widget/user-widget.component';
+import {UserComponent} from './components/user/user.component';
 import { UserCreateComponent } from './components/user-create/user-create.component';
 
 import { UserServiceMockService } from './user-service-mock.service';
