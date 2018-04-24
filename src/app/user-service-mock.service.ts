@@ -2,8 +2,17 @@ import {Injectable, EventEmitter} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from './user';
 
+export interface UserService {
+  dataUpdated: any;
+  getUser(id: number): User;
+  createUser(user: User);
+  saveUser(id: number, user: User);
+  deleteUser(id: number);
+  getUsers(): User[];
+}
+
 @Injectable()
-export class UserServiceMockService {
+export class UserServiceMockService implements UserService {
   dataUpdated = new EventEmitter();
   users: User[];
 

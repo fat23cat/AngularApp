@@ -1,0 +1,23 @@
+<form (submit)="submitUser()">
+  <div class="flex-container">
+    <mat-form-field class="flex-item">
+      <input matInput placeholder="name" [(ngModel)]="name" name="name">
+    </mat-form-field>
+    <mat-form-field class="flex-item">
+      <input matInput placeholder="username" [(ngModel)]="username" name="username">
+    </mat-form-field>
+    <mat-form-field class="flex-item">
+      <input matInput placeholder="email" [(ngModel)]="email" name="email">
+    </mat-form-field>
+    <mat-form-field class="flex-item">
+      <input matInput placeholder="phone" [(ngModel)]="phone" name="phone">
+    </mat-form-field>
+    <mat-form-field class="flex-item">
+      <input matInput placeholder="website" [(ngModel)]="website" name="website">
+    </mat-form-field>
+    <div>
+      <button mat-raised-button type="submit"> {{buttonCaption}} </button>
+      <button mat-raised-button (click)="Cancel()" > Cancel </button>
+    </div>
+  </div>
+</form>

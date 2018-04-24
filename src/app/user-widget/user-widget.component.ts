@@ -1,6 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material';
+
 import {User} from '../user';
-import {UserServiceMockService} from '../user-service-mock.service';
+import { UserService } from '../user-service-mock.service';
+import {UserCreateComponent} from '../components/user-create/user-create.component';
+
 
 
 @Component({
@@ -11,7 +15,14 @@ import {UserServiceMockService} from '../user-service-mock.service';
 export class UserWidgetComponent implements OnInit {
 
   users: User[] = null;
-  constructor(private usersService: UserServiceMockService) {
+  constructor(@Inject('FakeInstance') private usersService: UserService, public dialog: MatDialog) {
+  }
+
+  showCreateUser(): void {
+      this.dialog.open(UserCreateComponent, {
+          width: '250px',
+        }
+      );
   }
 
   ngOnInit() {
